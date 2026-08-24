@@ -1,0 +1,42 @@
+{
+  "name": "My Website",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "containerEnv": {
+    "TZ": "Asia/Ho_Chi_Minh",
+    "PNPM_HOME": "/home/node/.local/share/pnpm",
+    // Docker Desktop exposes the host ssh-agent at this fixed socket path.
+    "SSH_AUTH_SOCK": "/ssh-agent"
+  },
+  "remoteEnv": {
+    "PATH": "/home/node/.local/share/pnpm:${containerEnv:PATH}"
+  },
+  "mounts": [
+    "source=/run/host-services/ssh-auth.sock,target=/ssh-agent,type=bind",
+    "source=my-website-pnpm-store,target=/home/node/.local/share/pnpm,type=volume"
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "forwardPorts": [4321],
+  "portsAttributes": {
+    "4321": {
+      "label": "Astro",
+      "onAutoForward": "notify"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "astro-build.astro-vscode"
+      ],
+      "settings": {
+        "npm.packageManager": "pnpm"
+      }
+    }
+  },
+  // Docker Desktop creates named volumes as root; pnpm writes here as node.
+  "postCreateCommand": "sudo chown -R node:node /home/node/.local/share/pnpm",
+  "remoteUser": "node"
+}
