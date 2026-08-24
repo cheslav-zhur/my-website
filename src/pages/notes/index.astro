@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const notes = await getCollection('notes');
+const sortedNotes = [...notes].sort((a, b) => {
+	const ad = String(a.data.date ?? '');
+	const bd = String(b.data.date ?? '');
+	return bd.localeCompare(ad);
+});
+---
+
+<Layout>
+	<main style="padding: 16px;">
+		<h1>Notes</h1>
+
+		{sortedNotes.length === 0 ? (
+			<p>No notes yet. Add a markdown file to <code>src/content/notes/</code>.</p>
+		) : (
+			<ul>
+				{sortedNotes.map((note) => (
+					<li>
+						{(() => {
+							const slug = String(note.id);
+							return (
+								<a href={`/notes/${slug}/`}>
+									{String(note.data.title ?? slug)}
+								</a>
+							);
+						})()}
+					</li>
+				))}
+			</ul>
+		)}
+	</main>
+</Layout>
+
