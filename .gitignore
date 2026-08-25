@@ -58,8 +58,8 @@ typings/
 # Astro
 dist/
 .astro/
+# Obsidian vault (real files). Keep src/content/notes symlink tracked.
 content/notes/
-src/content/notes/
 archive/
 
 # Mac files
