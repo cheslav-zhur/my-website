@@ -1,0 +1,67 @@
+@import 'tailwindcss';
+
+/*
+  Design tokens — tweak these to restyle the whole site.
+  Primary accent: orange. Secondary accent: violet.
+*/
+@theme {
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Syne', ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg: #0f0e13;
+  --color-bg-elevated: #17161d;
+  --color-surface: #1d1b24;
+  --color-fg: #f4f1ea;
+  --color-muted: #a39e96;
+  --color-border: #2e2b36;
+
+  --color-accent: #ff7a1a;
+  --color-accent-hover: #ff9447;
+  --color-accent-soft: color-mix(in oklab, #ff7a1a 18%, transparent);
+
+  --color-accent-2: #9b6bff;
+  --color-accent-2-hover: #b18cff;
+  --color-accent-2-soft: color-mix(in oklab, #9b6bff 18%, transparent);
+
+  --radius-card: 0.75rem;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background:
+      radial-gradient(1200px 600px at 10% -10%, var(--color-accent-2-soft), transparent 55%),
+      radial-gradient(900px 500px at 100% 0%, var(--color-accent-soft), transparent 50%),
+      var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  a {
+    color: var(--color-accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  a:hover {
+    color: var(--color-accent-hover);
+  }
+
+  code {
+    border: 1px solid var(--color-border);
+    border-radius: 0.375rem;
+    background: var(--color-surface);
+    padding: 0.1rem 0.35rem;
+    font-size: 0.9em;
+  }
+}

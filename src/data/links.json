@@ -1,0 +1,31 @@
+{
+  "social": [
+    { "name": "vk", "link": "https://vk.com/id91645893" },
+    { "name": "facebook", "link": "https://www.facebook.com/happylolonly" },
+    { "name": "twitter", "link": "https://twitter.com/happylolonly" },
+    { "name": "instagram", "link": "https://www.instagram.com/happylolonly" },
+    { "name": "linkedin", "link": "https://www.linkedin.com/in/cheslav-zhuravsky-b56aa8127/" },
+    { "name": "telegram", "link": "https://t.me/happylolonly" },
+    { "name": "youtube", "link": "https://www.youtube.com/channel/UCqOkYMDAlenR4k7GbBl9S3g" },
+    { "name": "skype", "link": "skype:happylolonly" },
+    { "name": "github", "link": "https://github.com/happylolonly" },
+    { "name": "upwork", "link": "https://www.upwork.com/fl/cheslavzhuravsky" }
+  ],
+  "resume": [
+    {
+      "name": "Projects list (spreadsheet)",
+      "link": "https://docs.google.com/spreadsheets/d/1m2GCmSMC1CIPycSTXIL4FWAUuGv28yXmAQP_09Tg5sg/edit"
+    },
+    {
+      "name": "Resume (jobs.tut.by)",
+      "link": "https://jobs.tut.by/resume/baf76e09ff02d58f690039ed1f5944364d5349"
+    },
+    { "name": "Upwork", "link": "https://www.upwork.com/fl/cheslavzhuravsky" },
+    { "name": "Codewars", "link": "https://www.codewars.com/users/HappyLoL" },
+    { "name": "GitHub", "link": "https://github.com/happylolonly" },
+    { "name": "Codersrank", "link": "https://profile.codersrank.io/user/happylolonly" },
+    { "name": "Sourcerer", "link": "https://sourcerer.io/happylolonly" },
+    { "name": "Coderstats", "link": "https://coderstats.net/github/#HappyLoLonly" },
+    { "name": "Git awards", "link": "http://git-awards.com/users/search?login=happylolonly" }
+  ]
+}

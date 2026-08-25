@@ -20,12 +20,14 @@ const { Content } = await render(entry);
 const title = String(entry.data.title ?? slug);
 ---
 
-<Layout>
-	<main style="padding: 16px;">
-		<article>
-			<h1>{title}</h1>
+<Layout title={`${title} — Cheslav Zhuravsky`}>
+	<main class="space-y-6">
+		<p>
+			<a href="/notes/" class="text-sm text-muted no-underline hover:text-accent">← Notes</a>
+		</p>
+		<article class="prose-invert space-y-4 leading-7 text-muted [&_a]:text-accent [&_h1]:font-display [&_h1]:text-fg [&_h2]:text-fg [&_p]:text-muted">
+			<h1 class="font-display text-3xl font-bold text-fg">{title}</h1>
 			<Content />
 		</article>
 	</main>
 </Layout>
-

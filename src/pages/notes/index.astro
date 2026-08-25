@@ -10,28 +10,27 @@ const sortedNotes = [...notes].sort((a, b) => {
 });
 ---
 
-<Layout>
-	<main style="padding: 16px;">
-		<h1>Notes</h1>
+<Layout title="Notes — Cheslav Zhuravsky">
+	<main class="space-y-6">
+		<h1 class="font-display text-3xl font-bold">Notes</h1>
 
 		{sortedNotes.length === 0 ? (
-			<p>No notes yet. Add a markdown file to <code>src/content/notes/</code>.</p>
+			<p class="text-muted">
+				No notes yet. Add a markdown file to <code>content/notes/</code>.
+			</p>
 		) : (
-			<ul>
-				{sortedNotes.map((note) => (
-					<li>
-						{(() => {
-							const slug = String(note.id);
-							return (
-								<a href={`/notes/${slug}/`}>
-									{String(note.data.title ?? slug)}
-								</a>
-							);
-						})()}
-					</li>
-				))}
+			<ul class="space-y-3">
+				{sortedNotes.map((note) => {
+					const slug = String(note.id);
+					return (
+						<li class="rounded-card border border-border bg-surface px-4 py-3">
+							<a href={`/notes/${slug}/`} class="font-medium no-underline hover:text-accent">
+								{String(note.data.title ?? slug)}
+							</a>
+						</li>
+					);
+				})}
 			</ul>
 		)}
 	</main>
 </Layout>
-

@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import links from '../../data/links.json';
+---
+
+<Layout title="Social — Cheslav Zhuravsky">
+	<main class="space-y-6">
+		<h1 class="font-display text-3xl font-bold">Social links</h1>
+		<ul class="grid gap-3 sm:grid-cols-2">
+			{links.social.map((item) => (
+				<li>
+					<a
+						href={item.link}
+						target="_blank"
+						rel="noreferrer"
+						class="block rounded-card border border-border bg-surface px-4 py-3 font-medium text-fg no-underline hover:border-accent hover:text-accent"
+					>
+						{item.name}
+					</a>
+				</li>
+			))}
+		</ul>
+	</main>
+</Layout>

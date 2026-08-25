@@ -1,11 +1,29 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import about from '../data/about.json';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={about.name}>
+	<main class="space-y-6">
+		<p class="text-sm font-medium tracking-wide text-accent-2 uppercase">About</p>
+		<div class="flex items-center gap-5">
+			<img
+				src={about.gravatar}
+				alt={about.name}
+				width="96"
+				height="96"
+				class="size-24 shrink-0 rounded-full object-cover ring-2 ring-border"
+			/>
+			<h1 class="font-display text-4xl font-bold text-fg">{about.name}</h1>
+		</div>
+		<!-- <p class="max-w-2xl text-lg leading-8 text-muted">{about.about}</p> -->
+		<div class="flex gap-4 text-sm">
+			<a href="/social/" class="rounded-card bg-accent px-4 py-2 font-medium text-bg no-underline hover:bg-accent-hover hover:text-bg">
+				Social links
+			</a>
+			<a href="/notes/" class="rounded-card border border-border bg-surface px-4 py-2 font-medium text-fg no-underline hover:border-accent-2">
+				Notes
+			</a>
+		</div>
+	</main>
 </Layout>
