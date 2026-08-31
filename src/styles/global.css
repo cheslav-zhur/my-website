@@ -64,4 +64,10 @@
     padding: 0.1rem 0.35rem;
     font-size: 0.9em;
   }
+
+  .wikilink-missing {
+    color: var(--color-muted);
+    text-decoration: none;
+    cursor: help;
+  }
 }
