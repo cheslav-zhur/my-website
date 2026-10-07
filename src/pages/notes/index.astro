@@ -1,8 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import { includeInSite } from '../../lib/publish';
 
-const notes = await getCollection('notes');
+const notes = await getCollection('notes', ({ data }) => includeInSite(data));
 const sortedNotes = [...notes].sort((a, b) => {
 	const ad = String(a.data.date ?? '');
 	const bd = String(b.data.date ?? '');

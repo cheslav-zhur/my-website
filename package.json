@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "notes:ready": "node scripts/list-ready-notes.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

@@ -1,9 +1,10 @@
 ---
 import { getCollection, getEntry, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import { includeInSite } from '../../lib/publish';
 
 export async function getStaticPaths() {
-	const notes = await getCollection('notes');
+	const notes = await getCollection('notes', ({ data }) => includeInSite(data));
 	return notes.map((note) => ({
 		params: { slug: String(note.id) },
 	}));
@@ -12,7 +13,7 @@ export async function getStaticPaths() {
 const slug = String(Astro.params.slug);
 const entry = await getEntry('notes', slug);
 
-if (!entry) {
+if (!entry || !includeInSite(entry.data)) {
 	return Astro.notFound();
 }
 

@@ -19,7 +19,7 @@ Personal site + notes for **Cheslav Zhuravsky**.
 | Notes | gitignored vault; Dev Container bind-mounts `NOTES_VAULT` onto it |
 | Notes layout | `projects/`, `areas/`, `journal/` (+ vault `AGENTS.md`) |
 | Notes format | frontmatter + tags + `[[wikilinks]]`; no backlinks/graph yet |
-| Publish notes | md stays out of git; site consumes them at local build |
+| Publish notes | md stays out of git; `astro build` includes only frontmatter `publish: ready` (`pnpm dev` still shows the vault). Check the set with `pnpm notes:ready` |
 | Deploy | local for now — no CI |
 | Old Gatsby UI | do not port |
 

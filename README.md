@@ -15,6 +15,7 @@ Static Astro site: home (“who I am”), social links, and notes from a local O
 | `pnpm install` | Install dependencies |
 | `pnpm dev` | Dev server at `http://localhost:4321` |
 | `pnpm build` | Static build to `./dist/` |
+| `pnpm notes:ready` | List notes with `publish: ready` before building |
 | `pnpm preview` | Preview the production build |
 
 ## Layout

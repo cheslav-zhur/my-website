@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { includeInSite } from './publish';
 
 const VAULT_DIR = path.resolve('content/notes');
 const SKIP_FILES = new Set(['AGENTS.md']);
@@ -18,6 +19,16 @@ function toNoteId(relativePath: string): string {
 		.split(path.sep)
 		.map((segment) => slugifySegment(segment))
 		.join('/');
+}
+
+function frontmatterField(source: string, key: string): string {
+	if (!source.startsWith('---')) return '';
+	const end = source.indexOf('\n---', 3);
+	if (end === -1) return '';
+	const match = source
+		.slice(0, end)
+		.match(new RegExp(`^${key}:\\s*(?:["']([^"']+)["']|(.+))\\s*$`, 'm'));
+	return (match?.[1] ?? match?.[2] ?? '').trim();
 }
 
 function readTitle(source: string, fallback: string): string {
@@ -63,6 +74,7 @@ export function buildNotesIndex(vaultDir = VAULT_DIR): NotesIndex {
 		const id = toNoteId(relative);
 		const stem = path.basename(relative, '.md');
 		const source = fs.readFileSync(filePath, 'utf8');
+		if (!includeInSite({ publish: frontmatterField(source, 'publish') })) continue;
 		const title = readTitle(source, stem);
 
 		ids.add(id);
