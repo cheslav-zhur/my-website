@@ -58,7 +58,7 @@ typings/
 # Astro
 dist/
 .astro/
-# Obsidian vault (real files). Keep src/content/notes symlink tracked.
+# Obsidian vault, bind-mounted in the Dev Container.
 content/notes/
 archive/
 

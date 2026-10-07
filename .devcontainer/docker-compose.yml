@@ -1,0 +1,9 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspaces/my-website:cached
+      - "${NOTES_VAULT}:/workspaces/my-website/content/notes"
+    command: sleep infinity

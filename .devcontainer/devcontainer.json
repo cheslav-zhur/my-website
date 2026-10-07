@@ -1,8 +1,9 @@
 {
   "name": "My Website",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/my-website",
+  "shutdownAction": "stopCompose",
   "containerEnv": {
     "TZ": "Asia/Ho_Chi_Minh",
     "PNPM_HOME": "/home/node/.local/share/pnpm",

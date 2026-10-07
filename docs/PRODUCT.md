@@ -16,7 +16,8 @@ Personal site + notes for **Cheslav Zhuravsky**.
 | Styling | Tailwind v4 + CSS tokens in `src/styles/global.css` |
 | Package manager | pnpm 10 (Dev Container / corepack) |
 | Site data | `src/data/*.json` in git |
-| Notes | `content/notes/*.md`, gitignored; symlink into `src/content/notes` |
+| Notes | gitignored vault; Dev Container bind-mounts `NOTES_VAULT` onto it |
+| Notes layout | `projects/`, `areas/`, `journal/` (+ vault `AGENTS.md`) |
 | Notes format | frontmatter + tags + `[[wikilinks]]`; no backlinks/graph yet |
 | Publish notes | md stays out of git; site consumes them at local build |
 | Deploy | local for now — no CI |

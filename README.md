@@ -22,8 +22,7 @@ Static Astro site: home (“who I am”), social links, and notes from a local O
 - Pages: `src/pages/`
 - Site data: `src/data/about.json`, `src/data/links.json`
 - Theme tokens: `src/styles/global.css`
-- Notes vault: `content/notes/` (gitignored)
-- Astro content symlink: `src/content/notes` → `content/notes`
+- Notes vault: gitignored; Dev Container bind-mounts `NOTES_VAULT` onto it
 
 ## Docs
 

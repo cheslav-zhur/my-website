@@ -17,13 +17,13 @@ Product decisions and backlog: [`docs/PRODUCT.md`](docs/PRODUCT.md). Prefer that
 - **pnpm 10**, Node **24**, work in the **Dev Container**.
 - Pages: TypeScript / `.astro` in git.
 - Site copy/data: `src/data/*.json` in git.
-- Notes vault: `content/notes/*.md` (**gitignored**). Astro reads them via symlink `src/content/notes` → `../../content/notes`.
+- Notes vault: gitignored. Compose bind-mounts it from `NOTES_VAULT` in `.devcontainer/.env`.
 - Notes format: frontmatter + tags + `[[wikilinks]]`. No backlinks/graph yet.
 - Deploy: local for now. No CI.
 
 ## Do not
 
-- Commit `content/notes/`, `archive/`, secrets, or `.env*`
+- Commit the notes vault, `archive/`, secrets, or `.env*`
 - Add CI, SSR adapters, CMS, comments, search, or a notes git repo
 - Port the old Gatsby UI
 - Install packages without asking first
@@ -34,8 +34,7 @@ Product decisions and backlog: [`docs/PRODUCT.md`](docs/PRODUCT.md). Prefer that
 ```
 .devcontainer/          # Node 24 + pnpm
 archive/                # gitignored local salvage; not the live site
-content/notes/          # gitignored Obsidian vault
-src/content/notes       # symlink → content/notes (tracked)
+content/notes/          # gitignored; bind-mounted from NOTES_VAULT in .devcontainer/.env
 src/content.config.ts   # notes collection loader
 src/data/               # about.json, links.json
 src/pages/              # home, notes, social
