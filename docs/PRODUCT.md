@@ -14,7 +14,7 @@ Personal site + notes for **Cheslav Zhuravsky**.
 |---|---|
 | Stack | Astro, static (`astro build`). No SSR |
 | Styling | Tailwind v4 + CSS tokens in `src/styles/global.css` |
-| Package manager | pnpm 10 (Dev Container / corepack) |
+| Package manager | pnpm via corepack (`packageManager` in `package.json`) |
 | Site data | `src/data/*.json` in git |
 | Notes | gitignored vault; Dev Container bind-mounts `NOTES_VAULT` onto it |
 | Notes layout | `projects/`, `areas/`, `journal/` (+ vault `AGENTS.md`) |
