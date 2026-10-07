@@ -1,5 +1,5 @@
 import { defineHastPlugin } from 'satteri';
-import { buildNotesIndex, type NotesIndex } from './notes-index';
+import { refreshNotesIndex, type NotesIndex } from './notes-index';
 
 const WIKILINK_RE = /\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|([^\]]+))?\]\]/g;
 
@@ -22,7 +22,7 @@ export function hastWikilinks() {
 	return defineHastPlugin({
 		name: 'hast-wikilinks',
 		before(_root, ctx) {
-			(ctx.data as NotesIndexData).notesIndex = buildNotesIndex();
+			(ctx.data as NotesIndexData).notesIndex = refreshNotesIndex();
 		},
 		text(node, ctx) {
 			if (!node.value.includes('[[')) return;

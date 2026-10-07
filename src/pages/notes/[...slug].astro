@@ -1,6 +1,8 @@
 ---
 import { getCollection, getEntry, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import { noteTitle } from '../../lib/note-title';
+import { refreshNotesIndex } from '../../lib/notes-index';
 import { includeInSite } from '../../lib/publish';
 
 export async function getStaticPaths() {
@@ -17,8 +19,9 @@ if (!entry || !includeInSite(entry.data)) {
 	return Astro.notFound();
 }
 
+refreshNotesIndex();
 const { Content } = await render(entry);
-const title = String(entry.data.title ?? slug);
+const title = noteTitle(entry.data, slug);
 ---
 
 <Layout title={`${title} — Cheslav Zhuravsky`}>
@@ -26,7 +29,7 @@ const title = String(entry.data.title ?? slug);
 		<p>
 			<a href="/notes/" class="text-sm text-muted no-underline hover:text-accent">← Notes</a>
 		</p>
-		<article class="prose-invert space-y-4 leading-7 text-muted [&_a]:text-accent [&_h1]:font-display [&_h1]:text-fg [&_h2]:text-fg [&_p]:text-muted">
+		<article class="note-body prose-invert space-y-4 leading-7 text-muted [&_a]:text-accent [&_h1]:font-display [&_h1]:text-fg [&_h2]:text-fg [&_p]:text-muted">
 			<h1 class="font-display text-3xl font-bold text-fg">{title}</h1>
 			<Content />
 		</article>

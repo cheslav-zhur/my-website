@@ -1,12 +1,15 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { notesDir } from './notes-dir';
 import { includeInSite } from './publish';
 
-const VAULT_DIR = path.resolve('content/notes');
+const VAULT_DIR = path.resolve(notesDir);
 const SKIP_FILES = new Set(['AGENTS.md']);
 
 export type NotesIndex = {
 	resolve(target: string): string | undefined;
+	/** Original filename stem (preserves casing/spaces), without `.md`. */
+	filenameStem(id: string): string | undefined;
 };
 
 function slugifySegment(value: string): string {
@@ -32,9 +35,7 @@ function frontmatterField(source: string, key: string): string {
 }
 
 function readTitle(source: string, fallback: string): string {
-	const match = source.match(/^title:\s*(?:["']([^"']+)["']|(.+))\s*$/m);
-	const title = (match?.[1] ?? match?.[2] ?? '').trim();
-	return title || fallback;
+	return frontmatterField(source, 'title') || fallback;
 }
 
 function walkMarkdownFiles(dir: string): string[] {
@@ -58,6 +59,7 @@ function walkMarkdownFiles(dir: string): string[] {
 /** Build a resolver for Obsidian-style `[[target]]` → note id. */
 export function buildNotesIndex(vaultDir = VAULT_DIR): NotesIndex {
 	const ids = new Set<string>();
+	const stems = new Map<string, string>();
 	const byBasename = new Map<string, string[]>();
 	const byTitle = new Map<string, string[]>();
 
@@ -78,6 +80,7 @@ export function buildNotesIndex(vaultDir = VAULT_DIR): NotesIndex {
 		const title = readTitle(source, stem);
 
 		ids.add(id);
+		stems.set(id, stem);
 		add(byBasename, stem, id);
 		add(byBasename, slugifySegment(stem), id);
 		add(byTitle, title, id);
@@ -104,5 +107,20 @@ export function buildNotesIndex(vaultDir = VAULT_DIR): NotesIndex {
 			const base = cleaned.includes('/') ? cleaned.slice(cleaned.lastIndexOf('/') + 1) : cleaned;
 			return unique(byBasename, base) ?? unique(byBasename, slugifySegment(base)) ?? unique(byTitle, cleaned);
 		},
+		filenameStem(id: string): string | undefined {
+			return stems.get(id);
+		},
 	};
+}
+
+let cachedIndex: NotesIndex | null = null;
+
+export function getNotesIndex(): NotesIndex {
+	if (!cachedIndex) cachedIndex = buildNotesIndex();
+	return cachedIndex;
+}
+
+export function refreshNotesIndex(): NotesIndex {
+	cachedIndex = buildNotesIndex();
+	return cachedIndex;
 }

@@ -1,37 +1,83 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import { notesDir } from '../../lib/notes-dir';
+import { noteTitle } from '../../lib/note-title';
+import { refreshNotesIndex } from '../../lib/notes-index';
 import { includeInSite } from '../../lib/publish';
 
-const notes = await getCollection('notes', ({ data }) => includeInSite(data));
-const sortedNotes = [...notes].sort((a, b) => {
+refreshNotesIndex();
+
+type NoteEntry = Awaited<ReturnType<typeof getCollection<'notes'>>>[number];
+
+const SECTION_ORDER = [
+	{ key: 'projects', label: 'Projects' },
+	{ key: 'areas', label: 'Areas' },
+	{ key: 'journal', label: 'Journal' },
+	{ key: 'other', label: 'Other' },
+] as const;
+
+type SectionKey = (typeof SECTION_ORDER)[number]['key'];
+
+function sectionKey(id: string): SectionKey {
+	const top = id.split('/')[0];
+	if (top === 'projects' || top === 'areas' || top === 'journal') return top;
+	return 'other';
+}
+
+function byDateDesc(a: NoteEntry, b: NoteEntry): number {
 	const ad = String(a.data.date ?? '');
 	const bd = String(b.data.date ?? '');
-	return bd.localeCompare(ad);
-});
+	if (ad || bd) return bd.localeCompare(ad);
+	return String(a.id).localeCompare(String(b.id));
+}
+
+const notes = await getCollection('notes', ({ data }) => includeInSite(data));
+const grouped = new Map<SectionKey, NoteEntry[]>();
+for (const key of SECTION_ORDER.map((s) => s.key)) grouped.set(key, []);
+
+for (const note of notes) {
+	grouped.get(sectionKey(String(note.id)))!.push(note);
+}
+
+for (const list of grouped.values()) list.sort(byDateDesc);
+
+const sections = SECTION_ORDER.map(({ key, label }) => ({
+	key,
+	label,
+	notes: grouped.get(key) ?? [],
+})).filter((section) => section.notes.length > 0);
 ---
 
 <Layout title="Notes — Cheslav Zhuravsky">
-	<main class="space-y-6">
+	<main class="space-y-10">
 		<h1 class="font-display text-3xl font-bold">Notes</h1>
 
-		{sortedNotes.length === 0 ? (
+		{sections.length === 0 ? (
 			<p class="text-muted">
-				No notes yet. Add a markdown file to <code>content/notes/</code>.
+				No notes yet. Add a markdown file to <code>{notesDir}/</code>.
 			</p>
 		) : (
-			<ul class="space-y-3">
-				{sortedNotes.map((note) => {
-					const slug = String(note.id);
-					return (
-						<li class="rounded-card border border-border bg-surface px-4 py-3">
-							<a href={`/notes/${slug}/`} class="font-medium no-underline hover:text-accent">
-								{String(note.data.title ?? slug)}
-							</a>
-						</li>
-					);
-				})}
-			</ul>
+			sections.map((section) => (
+				<section class="space-y-4">
+					<h2 class="font-display text-xl font-semibold text-fg">{section.label}</h2>
+					<ul class="space-y-3">
+						{section.notes.map((note) => {
+							const slug = String(note.id);
+							return (
+								<li class="rounded-card border border-border bg-surface px-4 py-3 transition-colors hover:border-accent/50 hover:bg-bg-elevated">
+									<a
+										href={`/notes/${slug}/`}
+										class="font-medium text-fg no-underline transition-colors hover:text-accent"
+									>
+										{noteTitle(note.data, slug)}
+									</a>
+								</li>
+							);
+						})}
+					</ul>
+				</section>
+			))
 		)}
 	</main>
 </Layout>

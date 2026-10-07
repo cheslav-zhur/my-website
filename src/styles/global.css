@@ -49,12 +49,24 @@
 
   a {
     color: var(--color-accent);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.2em;
+    text-decoration-color: color-mix(in oklab, var(--color-accent) 45%, transparent);
+    transition:
+      color 160ms ease,
+      text-decoration-color 160ms ease,
+      background-color 160ms ease;
   }
 
   a:hover {
     color: var(--color-accent-hover);
+    text-decoration-color: var(--color-accent-hover);
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 0.2rem;
   }
 
   code {
@@ -69,5 +81,23 @@
     color: var(--color-muted);
     text-decoration: none;
     cursor: help;
+  }
+
+  /* Obsidian-like: keep single newlines inside a paragraph (e.g. stacked [[wikilinks]]). */
+  .note-body p {
+    white-space: pre-line;
+  }
+
+  .note-body a {
+    margin-inline: -0.2em;
+    padding-inline: 0.2em;
+    border-radius: 0.3rem;
+    text-decoration-thickness: 1.5px;
+  }
+
+  .note-body a:hover {
+    color: var(--color-fg);
+    background-color: var(--color-accent-soft);
+    text-decoration-color: color-mix(in oklab, var(--color-accent) 55%, transparent);
   }
 }
