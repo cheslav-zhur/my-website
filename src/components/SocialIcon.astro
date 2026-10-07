@@ -1,0 +1,25 @@
+---
+import { socialBrands } from '../lib/social-brands';
+
+interface Props {
+	name: string;
+	class?: string;
+}
+
+const { name, class: className = 'size-5 shrink-0' } = Astro.props;
+const brand = socialBrands[name];
+---
+
+{
+	brand && (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill={brand.color}
+			aria-hidden="true"
+			class={className}
+		>
+			<path d={brand.path} />
+		</svg>
+	)
+}

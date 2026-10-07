@@ -1,24 +1,60 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import SocialIcon from '../../components/SocialIcon.astro';
 import links from '../../data/links.json';
+import { socialBrands, socialGroups } from '../../lib/social-brands';
+
+const sections = socialGroups
+	.map((group) => ({
+		...group,
+		items: links.social.filter((item) => item.group === group.id),
+	}))
+	.filter((section) => section.items.length > 0);
 ---
 
 <Layout title="Social — Cheslav Zhuravsky">
-	<main class="space-y-6">
+	<main class="space-y-10">
 		<h1 class="font-display text-3xl font-bold">Social links</h1>
-		<ul class="grid gap-3 sm:grid-cols-2">
-			{links.social.map((item) => (
-				<li>
-					<a
-						href={item.link}
-						target="_blank"
-						rel="noreferrer"
-						class="block rounded-card border border-border bg-surface px-4 py-3 font-medium text-fg no-underline hover:border-accent hover:text-accent"
+
+		{
+			sections.map((section) => {
+				const dimmed = section.id === 'legacy';
+				return (
+				<section class="space-y-4">
+					<h2
+						class:list={[
+							'font-display text-xl font-semibold',
+							dimmed ? 'text-muted' : 'text-fg',
+						]}
 					>
-						{item.name}
-					</a>
-				</li>
-			))}
-		</ul>
+						{section.title}
+					</h2>
+					<ul class="flex flex-wrap gap-x-8 gap-y-4">
+						{section.items.map((item) => {
+							const label = socialBrands[item.name]?.label ?? item.name;
+							return (
+								<li>
+									<a
+										href={item.link}
+										target="_blank"
+										rel="noreferrer"
+										class:list={[
+											'group inline-flex items-center gap-2.5 no-underline',
+											dimmed && 'opacity-45 transition-opacity hover:opacity-100',
+										]}
+									>
+										<SocialIcon name={item.name} />
+										<span class="underline decoration-transparent underline-offset-[0.2em] group-hover:decoration-accent-hover">
+											{label}
+										</span>
+									</a>
+								</li>
+							);
+						})}
+					</ul>
+				</section>
+				);
+			})
+		}
 	</main>
 </Layout>
