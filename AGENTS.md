@@ -17,7 +17,7 @@ Product decisions and backlog: [`docs/PRODUCT.md`](docs/PRODUCT.md). Prefer that
 - **pnpm 10**, Node **24**, work in the **Dev Container**.
 - Pages: TypeScript / `.astro` in git.
 - Site copy/data: `src/data/*.json` in git.
-- Notes vault: gitignored. Compose bind-mounts it from `NOTES_VAULT` in `.devcontainer/.env`.
+- Notes vault: gitignored. Compose bind-mounts it from `NOTES_VAULT` in `.devcontainer/.env` (not the repo-root `.env`, not the shell). One `$` in `docker-compose.yml`. A Mac-absolute symlink is broken inside the container. After editing `.env`, rebuild the Dev Container.
 - Notes format: frontmatter + tags + `[[wikilinks]]`. No backlinks/graph yet.
 - Deploy: local for now. No CI.
 
@@ -34,7 +34,7 @@ Product decisions and backlog: [`docs/PRODUCT.md`](docs/PRODUCT.md). Prefer that
 ```
 .devcontainer/          # Node 24 + pnpm
 archive/                # gitignored local salvage; not the live site
-content/notes/          # gitignored; bind-mounted from NOTES_VAULT in .devcontainer/.env
+content/notes/          # gitignored vault
 src/content.config.ts   # notes collection loader
 src/data/               # about.json, links.json
 src/pages/              # home, notes, social

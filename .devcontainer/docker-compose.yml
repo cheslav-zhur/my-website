@@ -5,5 +5,9 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ..:/workspaces/my-website:cached
-      - "${NOTES_VAULT}:/workspaces/my-website/content/notes"
+      - type: bind
+        source: "${NOTES_VAULT:?Set NOTES_VAULT in .devcontainer/.env to an absolute host path}"
+        target: /workspaces/my-website/content/notes
+        bind:
+          create_host_path: false
     command: sleep infinity
