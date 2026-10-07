@@ -1,0 +1,17 @@
+---
+const sentence =
+	'This site is in active development. Content is also made with AI help and isn’t polished yet.';
+---
+
+<div id="dev-notice" class="border-b-2 border-accent bg-accent-soft text-sm text-fg">
+	<div class="mx-auto flex w-full max-w-3xl items-start gap-4 px-4 py-3">
+		<p class="m-0 min-w-0 flex-1 leading-6">{sentence}</p>
+		<button
+			type="button"
+			data-dev-notice-close
+			class="shrink-0 cursor-pointer rounded-md border border-border bg-bg/40 px-2.5 py-1 text-sm text-fg hover:border-accent focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-accent"
+		>
+			Close
+		</button>
+	</div>
+</div>
