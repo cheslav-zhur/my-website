@@ -14,7 +14,7 @@ Product decisions and backlog: [`docs/PRODUCT.md`](docs/PRODUCT.md). Prefer that
 
 - **Astro**, static HTML (`astro build`). No SSR.
 - **Tailwind CSS v4** via `@tailwindcss/vite`. Design tokens in `src/styles/global.css` (`@theme`).
-- **pnpm 10**, Node **24**, work in the **Dev Container**.
+- **pnpm** via corepack (`packageManager` in `package.json`), Node **24**, work in the **Dev Container**.
 - Pages: TypeScript / `.astro` in git.
 - Site copy/data: `src/data/*.json` in git.
 - Notes vault: gitignored. Compose bind-mounts it from `NOTES_VAULT` in `.devcontainer/.env` (not the repo-root `.env`, not the shell). One `$` in `docker-compose.yml`. A Mac-absolute symlink is broken inside the container. After editing `.env`, rebuild the Dev Container.

@@ -1,15 +1,15 @@
 {
   "social": [
-    { "name": "vk", "link": "https://vk.com/id91645893" },
-    { "name": "facebook", "link": "https://www.facebook.com/happylolonly" },
-    { "name": "twitter", "link": "https://twitter.com/happylolonly" },
-    { "name": "instagram", "link": "https://www.instagram.com/happylolonly" },
-    { "name": "linkedin", "link": "https://www.linkedin.com/in/cheslav-zhuravsky-b56aa8127/" },
-    { "name": "telegram", "link": "https://t.me/happylolonly" },
-    { "name": "youtube", "link": "https://www.youtube.com/channel/UCqOkYMDAlenR4k7GbBl9S3g" },
-    { "name": "skype", "link": "skype:happylolonly" },
-    { "name": "github", "link": "https://github.com/happylolonly" },
-    { "name": "upwork", "link": "https://www.upwork.com/fl/cheslavzhuravsky" }
+    { "name": "telegram", "group": "social", "link": "https://t.me/cheslav_zhur" },
+    { "name": "facebook", "group": "social", "link": "https://www.facebook.com/cheslav.zhuravsky/" },
+    { "name": "x", "group": "social", "link": "https://x.com/happylolonly" },
+    { "name": "instagram", "group": "social", "link": "https://www.instagram.com/cheslav_zhur/" },
+    { "name": "linkedin", "group": "professional", "link": "https://www.linkedin.com/in/cheslav-zhuravsky/" },
+    { "name": "github", "group": "professional", "link": "https://github.com/cheslav-zhur" },
+    { "name": "upwork", "group": "professional", "link": "https://www.upwork.com/fl/~013c3e78f26326fe80" },
+    { "name": "skype", "group": "legacy", "link": "skype:happylolonly" },
+    { "name": "youtube", "group": "legacy", "link": "https://www.youtube.com/channel/UCqOkYMDAlenR4k7GbBl9S3g" },
+    { "name": "vk", "group": "legacy", "link": "https://vk.com/id91645893" }
   ],
   "resume": [
     {
@@ -20,9 +20,9 @@
       "name": "Resume (jobs.tut.by)",
       "link": "https://jobs.tut.by/resume/baf76e09ff02d58f690039ed1f5944364d5349"
     },
-    { "name": "Upwork", "link": "https://www.upwork.com/fl/cheslavzhuravsky" },
+    { "name": "Upwork", "link": "https://www.upwork.com/fl/~013c3e78f26326fe80" },
     { "name": "Codewars", "link": "https://www.codewars.com/users/HappyLoL" },
-    { "name": "GitHub", "link": "https://github.com/happylolonly" },
+    { "name": "GitHub", "link": "https://github.com/cheslav-zhur" },
     { "name": "Codersrank", "link": "https://profile.codersrank.io/user/happylolonly" },
     { "name": "Sourcerer", "link": "https://sourcerer.io/happylolonly" },
     { "name": "Coderstats", "link": "https://coderstats.net/github/#HappyLoLonly" },

@@ -5,7 +5,7 @@ Static Astro site: home (“who I am”), social links, and notes from a local O
 ## Requirements
 
 - Node 24
-- pnpm 10
+- pnpm (version in `package.json` `packageManager`)
 - Prefer the Dev Container (`.devcontainer/`)
 
 ## Commands
