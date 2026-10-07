@@ -20,12 +20,11 @@ Personal site + notes for **Cheslav Zhuravsky**.
 | Notes layout | `projects/`, `areas/`, `journal/` (+ vault `AGENTS.md`) |
 | Notes format | frontmatter + tags + `[[wikilinks]]`; no backlinks/graph yet |
 | Publish notes | md stays out of git; `astro build` includes only frontmatter `publish: ready` (`pnpm dev` still shows the vault). Check the set with `pnpm notes:ready` |
-| Deploy | local for now — no CI |
+| Deploy | local for now. GitHub Actions runs `pnpm test` |
 | Old Gatsby UI | do not port |
 
 ## Out of scope (now)
 
-- CI / GitHub Actions
 - Separate notes git repo or cloud sync as a product feature
 - Backlinks, graph view, comments, search, CMS
 - Railway / env files / GH_TOKEN for the site
