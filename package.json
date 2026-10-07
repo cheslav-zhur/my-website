@@ -9,6 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "notes:ready": "node scripts/list-ready-notes.mjs",
+    "test": "vitest run",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -18,5 +19,8 @@
     "astro": "^7.2.4",
     "satteri": "^0.10.5",
     "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "vitest": "^5.0.3"
   }
 }
