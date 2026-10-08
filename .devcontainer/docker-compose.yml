@@ -10,4 +10,6 @@ services:
         target: /workspaces/my-website/content/notes
         bind:
           create_host_path: false
+    environment:
+      VERCEL_TOKEN: ${VERCEL_TOKEN:-}
     command: sleep infinity

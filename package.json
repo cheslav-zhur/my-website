@@ -14,6 +14,7 @@
     "check:private": "node scripts/check-private.mjs",
     "prepare": "node scripts/install-git-hooks.mjs",
     "preview": "astro preview",
+    "deploy": "vercel build --prod && vercel deploy --prebuilt --prod",
     "astro": "astro"
   },
   "dependencies": {

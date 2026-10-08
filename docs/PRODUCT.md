@@ -18,7 +18,7 @@ Personal site + notes for **Cheslav Zhuravsky**.
 | Publish notes | Markdown stays out of git. `astro build` includes only frontmatter `publish: ready`. `pnpm dev` still shows the vault. `pnpm notes:ready` lists the set |
 | Wikilinks | `[[wikilinks]]` render as `/notes/.../` links. No backlinks or graph |
 | Private paths | `content/notes/`, `archive/`, and `.env*` stay out of git. `pnpm check:private`; `pnpm prepare` installs a pre-push hook that runs it |
-| Deploy | Local for now. GitHub Actions runs `pnpm test` |
+| Deploy | Local `pnpm run deploy` uploads a prebuilt build. Vercel does not build from git. Details: [`DEV.md`](DEV.md). GitHub Actions runs `pnpm test` |
 | Old Gatsby UI | Do not port |
 
 ## Out of scope (now)

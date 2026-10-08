@@ -35,7 +35,7 @@
       }
     }
   },
-  // Docker Desktop creates named volumes as root; pnpm writes here as node.
-  "postCreateCommand": "sudo chown -R node:node /home/node/.local/share/pnpm",
+  // The pnpm volume, and sometimes its parent dirs, are created as root.
+  "postCreateCommand": "sudo chown -R node:node /home/node/.local",
   "remoteUser": "node"
 }
