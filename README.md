@@ -5,7 +5,7 @@
 ![Node](https://img.shields.io/badge/Node-339933?style=flat-square&logo=nodedotjs&logoColor=white)
 ![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 
-Static Astro site: home (“who I am”), social links, and notes from a local Obsidian vault.
+My personal site, built from knowledge-base files.
 
 ## Docs
 
