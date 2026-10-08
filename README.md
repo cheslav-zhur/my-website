@@ -1,31 +1,14 @@
 # Cheslav Zhuravsky — personal site
 
+[![CI](https://img.shields.io/github/actions/workflow/status/cheslav-zhur/my-website/test.yml?style=flat-square&label=CI)](https://github.com/cheslav-zhur/my-website/actions/workflows/test.yml)
+![Astro](https://img.shields.io/badge/Astro-BC52EE?style=flat-square&logo=astro&logoColor=white)
+![Node](https://img.shields.io/badge/Node-339933?style=flat-square&logo=nodedotjs&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+
 Static Astro site: home (“who I am”), social links, and notes from a local Obsidian vault.
-
-## Requirements
-
-- Node 24
-- pnpm (version in `package.json` `packageManager`)
-- Prefer the Dev Container (`.devcontainer/`)
-
-## Commands
-
-| Command | Action |
-|---|---|
-| `pnpm install` | Install dependencies |
-| `pnpm dev` | Dev server at `http://localhost:4321` |
-| `pnpm build` | Static build to `./dist/` |
-| `pnpm notes:ready` | List notes with `publish: ready` before building |
-| `pnpm preview` | Preview the production build |
-
-## Layout
-
-- Pages: `src/pages/`
-- Site data: `src/data/about.json`, `src/data/links.json`
-- Theme tokens: `src/styles/global.css`
-- Notes vault: gitignored; Dev Container bind-mounts `NOTES_VAULT` onto it
 
 ## Docs
 
+- How to run it, and the stack: [`docs/DEV.md`](docs/DEV.md)
+- Product decisions and backlog: [`docs/PRODUCT.md`](docs/PRODUCT.md)
 - Agent rules: [`AGENTS.md`](AGENTS.md)
-- Product decisions / backlog: [`docs/PRODUCT.md`](docs/PRODUCT.md)

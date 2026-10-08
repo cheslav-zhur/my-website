@@ -12,20 +12,17 @@ Personal site + notes for **Cheslav Zhuravsky**.
 
 | Topic | Decision |
 |---|---|
-| Stack | Astro, static (`astro build`). No SSR |
-| Styling | Tailwind v4 + CSS tokens in `src/styles/global.css` |
-| Package manager | pnpm via corepack (`packageManager` in `package.json`) |
+| Stack | Static Astro, no SSR. Versions, commands, and layout: [`DEV.md`](DEV.md) |
 | Site data | `src/data/*.json` in git |
-| Notes | gitignored vault; Dev Container bind-mounts `NOTES_VAULT` onto it |
-| Notes layout | `projects/`, `areas/`, `journal/` (+ vault `AGENTS.md`) |
-| Notes format | frontmatter + tags + `[[wikilinks]]`; no backlinks/graph yet |
-| Publish notes | md stays out of git; `astro build` includes only frontmatter `publish: ready` (`pnpm dev` still shows the vault). Check the set with `pnpm notes:ready` |
-| Deploy | local for now — no CI |
-| Old Gatsby UI | do not port |
+| Notes vault | Gitignored `content/notes/`. Folders: `projects/`, `areas/`, `journal/`. Conventions: that folder’s `AGENTS.md` |
+| Publish notes | Markdown stays out of git. `astro build` includes only frontmatter `publish: ready`. `pnpm dev` still shows the vault. `pnpm notes:ready` lists the set |
+| Wikilinks | `[[wikilinks]]` render as `/notes/.../` links. No backlinks or graph |
+| Private paths | `content/notes/`, `archive/`, and `.env*` stay out of git. `pnpm check:private`; `pnpm prepare` installs a pre-push hook that runs it |
+| Deploy | Local for now. GitHub Actions runs `pnpm test` |
+| Old Gatsby UI | Do not port |
 
 ## Out of scope (now)
 
-- CI / GitHub Actions
 - Separate notes git repo or cloud sync as a product feature
 - Backlinks, graph view, comments, search, CMS
 - Railway / env files / GH_TOKEN for the site
@@ -47,12 +44,10 @@ Already moved into the live site:
 
 1. `public/llms.txt` (who I am + site map)
 2. Sitemap
-3. Render `[[wikilinks]]` in notes
-4. Optional: projects page from salvage / fresh data
-5. Deploy later
+3. Optional: projects page from salvage / fresh data
+4. Deploy later
 
 ## Constraints
 
 - Prefer a clean Astro app over rewriting Gatsby leftovers.
-- Do not commit notes or secrets.
 - Keep the first version small and shippable.
