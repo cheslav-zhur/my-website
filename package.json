@@ -11,6 +11,8 @@
     "build": "astro build",
     "notes:ready": "node scripts/list-ready-notes.mjs",
     "test": "vitest run",
+    "check:private": "node scripts/check-private.mjs",
+    "prepare": "node scripts/install-git-hooks.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

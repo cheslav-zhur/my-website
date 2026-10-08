@@ -6,15 +6,13 @@
   "shutdownAction": "stopCompose",
   "containerEnv": {
     "TZ": "Asia/Ho_Chi_Minh",
-    "PNPM_HOME": "/home/node/.local/share/pnpm",
-    // Docker Desktop exposes the host ssh-agent at this fixed socket path.
-    "SSH_AUTH_SOCK": "/ssh-agent"
+    "PNPM_HOME": "/home/node/.local/share/pnpm"
   },
   "remoteEnv": {
-    "PATH": "/home/node/.local/share/pnpm:${containerEnv:PATH}"
+    "PATH": "/home/node/.local/share/pnpm:${containerEnv:PATH}",
+    "GH_TOKEN": "${localEnv:GH_TOKEN}"
   },
   "mounts": [
-    "source=/run/host-services/ssh-auth.sock,target=/ssh-agent,type=bind",
     "source=my-website-pnpm-store,target=/home/node/.local/share/pnpm,type=volume"
   ],
   "features": {

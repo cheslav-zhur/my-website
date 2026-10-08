@@ -58,12 +58,16 @@ typings/
 # Astro
 dist/
 .astro/
+.worktrees/
 # Obsidian vault, bind-mounted in the Dev Container.
 content/notes/
 archive/
 
 # Mac files
 .DS_Store
+
+# Editor
+.vscode/
 
 # Yarn
 yarn-error.log
