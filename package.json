@@ -10,6 +10,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "notes:ready": "node scripts/list-ready-notes.mjs",
+    "test": "vitest run",
     "check:private": "node scripts/check-private.mjs",
     "prepare": "node scripts/install-git-hooks.mjs",
     "preview": "astro preview",
@@ -21,5 +22,8 @@
     "astro": "^7.2.4",
     "satteri": "^0.10.5",
     "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "vitest": "^5.0.3"
   }
 }

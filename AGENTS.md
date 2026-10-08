@@ -19,12 +19,12 @@ Product decisions and backlog: [`docs/PRODUCT.md`](docs/PRODUCT.md). Prefer that
 - Site copy/data: `src/data/*.json` in git.
 - Notes vault: gitignored. Compose bind-mounts it from `NOTES_VAULT` in `.devcontainer/.env` (not the repo-root `.env`, not the shell). One `$` in `docker-compose.yml`. A Mac-absolute symlink is broken inside the container. After editing `.env`, rebuild the Dev Container.
 - Notes format: frontmatter + tags + `[[wikilinks]]`. No backlinks/graph yet.
-- Deploy: local for now. No CI.
+- Deploy: local for now. GitHub Actions runs `pnpm test`.
 
 ## Do not
 
 - Commit the notes vault, `archive/`, secrets, or `.env*`
-- Add CI, SSR adapters, CMS, comments, search, or a notes git repo
+- Add SSR adapters, CMS, comments, search, a notes git repo, or CI beyond `pnpm test`
 - Port the old Gatsby UI
 - Install packages without asking first
 - Expand scope past a small shippable site
