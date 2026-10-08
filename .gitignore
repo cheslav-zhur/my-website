@@ -62,6 +62,7 @@ dist/
 # Obsidian vault, bind-mounted in the Dev Container.
 content/notes/
 archive/
+docs/ideation/
 
 # Mac files
 .DS_Store
